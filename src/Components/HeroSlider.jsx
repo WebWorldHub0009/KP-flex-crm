@@ -125,20 +125,23 @@ const HeroSlider = () => {
             </motion.a>
 
             <motion.div
-              className="relative group"
-              animate={{ y: [0, -4, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-            >
-              <a
-                href="https://forms.gle/2miVJp5JaHHRCpwG8"
-                className="backdrop-blur-md bg-white/10 border border-white/20 text-white px-6 py-3 rounded-full text-sm sm:text-base font-semibold hover:bg-white/20 shadow-lg transition"
-              >
-                CRM
-              </a>
-              <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-max max-w-xs px-3 py-2 bg-black text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-                Customer Relationship Management
-              </div>
-            </motion.div>
+  className="relative group"
+  animate={{ y: [0, -4, 0] }}
+  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+>
+  <a
+    href="https://forms.gle/2miVJp5JaHHRCpwG8"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="backdrop-blur-md bg-white/10 border border-white/20 text-white px-6 py-3 rounded-full text-sm sm:text-base font-semibold hover:bg-white/20 shadow-lg transition"
+  >
+    CRM
+  </a>
+  <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-max max-w-xs px-3 py-2 bg-black text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+    Customer Relationship Management
+  </div>
+</motion.div>
+
 
             <motion.a
               href="/#employee"
