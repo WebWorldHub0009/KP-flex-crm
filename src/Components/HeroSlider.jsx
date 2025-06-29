@@ -22,17 +22,46 @@ const textVariant = {
 
 const HeroSlider = () => {
   const [index, setIndex] = useState(0);
+  const [allLoaded, setAllLoaded] = useState(false);
+
+  // Preload images
+  useEffect(() => {
+    let loaded = 0;
+    images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        loaded++;
+        if (loaded === images.length) setAllLoaded(true);
+      };
+    });
+  }, []);
 
   useEffect(() => {
+    if (!allLoaded) return;
     const timer = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
     }, 4000);
-
     return () => clearInterval(timer);
-  }, []);
+  }, [allLoaded]);
+
+  if (!allLoaded) {
+    return (
+      <section className="flex items-center justify-center h-screen bg-black text-white text-xl">
+        Loading...
+      </section>
+    );
+  }
 
   return (
     <section className="relative w-full h-screen overflow-hidden bg-gradient-to-br from-[#1A1A1A] via-[#0F0F0F] to-[#1A1A1A] font-sans">
+      {/* Hidden preloaded images */}
+      <div className="hidden">
+        {images.map((src, i) => (
+          <img key={i} src={src} alt={`preload-${i}`} loading="eager" />
+        ))}
+      </div>
+
       <div className="absolute inset-0">
         <AnimatePresence>
           <motion.div
@@ -84,48 +113,42 @@ const HeroSlider = () => {
             From banners to hoardings, our high-quality flex printing offers custom solutions to match your brand.
           </motion.p>
 
-          {/* Button Group */}
+          {/* Button Group with animation */}
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <motion.a
+              href="/#vendor"
+              className="bg-gradient-to-r from-[#FBBF24] to-[#E63946] text-white px-6 py-3 rounded-full text-sm sm:text-base font-semibold hover:brightness-110 shadow-lg transition"
+              animate={{ y: [0, -4, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            >
+              Vendor Registration
+            </motion.a>
 
-{/* Button Group with floating animation */}
-<div className="mt-10 flex flex-wrap justify-center gap-4">
-  {/* Vendor Registration Button */}
-  <motion.a
-    href="/#vendor"
-    className="bg-gradient-to-r from-[#FBBF24] to-[#E63946] text-white px-6 py-3 rounded-full text-sm sm:text-base font-semibold hover:brightness-110 shadow-lg transition"
-    animate={{ y: [0, -4, 0] }}
-    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-  >
-    Vendor Registration
-  </motion.a>
+            <motion.div
+              className="relative group"
+              animate={{ y: [0, -4, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+            >
+              <a
+                href="https://forms.gle/2miVJp5JaHHRCpwG8"
+                className="backdrop-blur-md bg-white/10 border border-white/20 text-white px-6 py-3 rounded-full text-sm sm:text-base font-semibold hover:bg-white/20 shadow-lg transition"
+              >
+                CRM
+              </a>
+              <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-max max-w-xs px-3 py-2 bg-black text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                Customer Relationship Management
+              </div>
+            </motion.div>
 
-  {/* CRM Button with tooltip */}
-  <motion.div
-    className="relative group"
-    animate={{ y: [0, -4, 0] }}
-    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-  >
-    <a
-      href="https://forms.gle/2miVJp5JaHHRCpwG8"
-      className="backdrop-blur-md bg-white/10 border border-white/20 text-white px-6 py-3 rounded-full text-sm sm:text-base font-semibold hover:bg-white/20 shadow-lg transition"
-    >
-      CRM
-    </a>
-    <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-max max-w-xs px-3 py-2 bg-black text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-      Customer Relationship Management
-    </div>
-  </motion.div>
-
-  {/* Employee Record Button */}
-  <motion.a
-    href="/#employee"
-    className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-3 rounded-full text-sm sm:text-base font-semibold hover:brightness-110 shadow-lg transition"
-    animate={{ y: [0, -4, 0] }}
-    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
-  >
-    Employee Record
-  </motion.a>
-</div>
-
+            <motion.a
+              href="/#employee"
+              className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-3 rounded-full text-sm sm:text-base font-semibold hover:brightness-110 shadow-lg transition"
+              animate={{ y: [0, -4, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
+            >
+              Employee Record
+            </motion.a>
+          </div>
         </div>
       </div>
     </section>
