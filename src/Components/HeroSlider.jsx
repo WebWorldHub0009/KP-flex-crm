@@ -77,10 +77,10 @@ const HeroSlider = () => {
       </div>
 
       {/* Overlay content */}
-      <div className="absolute inset-0 bg-[#0000008a] flex flex-col justify-end sm:justify-center items-center text-center px-6 pb-20 sm:pb-0">
+      <div className="absolute inset-0 bg-[#0000008a] flex flex-col justify-start sm:justify-center items-center text-center px-4 pt-6 pb-4 sm:pt-0 sm:pb-0">
         <div className="max-w-4xl text-white space-y-5">
           <motion.h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight drop-shadow"
+            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight drop-shadow mt-32 md:mt-2"
             initial="hidden"
             animate="visible"
             variants={textVariant}
@@ -94,7 +94,7 @@ const HeroSlider = () => {
           </motion.h1>
 
           <motion.h2
-            className="text-2xl sm:text-3xl font-bold text-white/90"
+            className="text-xl sm:text-3xl font-bold text-white/90"
             initial="hidden"
             animate="visible"
             variants={textVariant}
@@ -104,7 +104,7 @@ const HeroSlider = () => {
           </motion.h2>
 
           <motion.p
-            className="text-gray-300 text-base max-w-xl mx-auto"
+            className="text-gray-300 text-lg md:text-xl max-w-xl mx-auto"
             initial="hidden"
             animate="visible"
             variants={textVariant}
@@ -113,44 +113,51 @@ const HeroSlider = () => {
             From banners to hoardings, our high-quality flex printing offers custom solutions to match your brand.
           </motion.p>
 
-          {/* Button Group with animation */}
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <motion.a
-              href="/#vendor"
-              className="bg-gradient-to-r from-[#FBBF24] to-[#E63946] text-white px-6 py-3 rounded-full text-sm sm:text-base font-semibold hover:brightness-110 shadow-lg transition"
-              animate={{ y: [0, -4, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            >
-              Vendor Registration
-            </motion.a>
+          {/* Button Group */}
+          <div className="mt-12 md:mt-10 flex flex-col items-center gap-3 sm:gap-6">
+            {/* Top Row (Vendor + Client) */}
+            <div className="flex flex-wrap justify-center gap-4">
+              <motion.a
+                href="https://forms.gle/tqS8Xnc6wxo456Yt9"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gradient-to-r from-[#FBBF24] to-[#E63946] text-white px-5 py-2 sm:px-6 sm:py-3 rounded-full text-sm sm:text-base font-semibold hover:brightness-110 shadow-lg transition"
+                animate={{ y: [0, -4, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              >
+                Vendor Registration
+              </motion.a>
 
+              <motion.a
+                href="https://forms.gle/c1rwF6uFxyvfZUhM7"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-5 py-2 sm:px-6 sm:py-3 rounded-full text-sm sm:text-base font-semibold hover:brightness-110 shadow-lg transition"
+                animate={{ y: [0, -4, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
+              >
+                Client Records
+              </motion.a>
+            </div>
+
+            {/* CRM Button below */}
             <motion.div
-  className="relative group"
-  animate={{ y: [0, -4, 0] }}
-  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
->
-  <a
-    href="https://forms.gle/2miVJp5JaHHRCpwG8"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="backdrop-blur-md bg-white/10 border border-white/20 text-white px-6 py-3 rounded-full text-sm sm:text-base font-semibold hover:bg-white/20 shadow-lg transition"
-  >
-    CRM
-  </a>
-  <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-max max-w-xs px-3 py-2 bg-black text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
-    Customer Relationship Management
-  </div>
-</motion.div>
-
-
-            <motion.a
-              href="/#employee"
-              className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-3 rounded-full text-sm sm:text-base font-semibold hover:brightness-110 shadow-lg transition"
+              className="relative group"
               animate={{ y: [0, -4, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
             >
-              Employee Record
-            </motion.a>
+              <a
+                href="https://forms.gle/2miVJp5JaHHRCpwG8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="backdrop-blur-md bg-white/10 border border-white/20 text-white px-5 py-2 sm:px-6 sm:py-3 rounded-full text-sm sm:text-base font-semibold hover:bg-white/20 shadow-lg transition"
+              >
+                CRM
+              </a>
+              <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-max max-w-xs px-3 py-2 bg-black text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                Customer Relationship Management
+              </div>
+            </motion.div>
           </div>
         </div>
       </div>
