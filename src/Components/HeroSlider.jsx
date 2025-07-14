@@ -147,7 +147,7 @@ const HeroSlider = () => {
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
             >
               <a
-                href="https://forms.gle/2miVJp5JaHHRCpwG8"
+                href="https://forms.gle/zBot1A7bh6t2BvEJ6"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="backdrop-blur-md bg-white/10 border border-white/20 text-white px-5 py-2 sm:px-6 sm:py-3 rounded-full text-sm sm:text-base font-semibold hover:bg-white/20 shadow-lg transition"
